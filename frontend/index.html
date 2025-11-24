@@ -1,32 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Competition Finder</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Course Explorer — Competitions View</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <header>
+    <h1>Course Explorer (Coursera data as competitions)</h1>
+    <p class="subtitle">Search, filter, sort and browse courses fetched from Coursera API via our backend proxy.</p>
+  </header>
 
-<h1>Competition Arena</h1>
-
-<div class="controls">
-    <input id="search" placeholder="Search by name...">
-
-    <select id="type">
-        <option value="">All Competitions</option>
+  <main>
+    <section class="controls">
+      <input id="search" type="search" placeholder="Search by name or description..." />
+      <select id="type">
+        <option value="">All types</option>
         <option value="academic">Academic</option>
-        <option value="non-academic">Non-Academic</option>
-    </select>
+        <option value="professional">Professional</option>
+      </select>
+      <select id="sort">
+        <option value="date">Sort by date</option>
+        <option value="name">Sort by name</option>
+      </select>
+      <button id="refresh">Refresh</button>
+    </section>
 
-    <select id="sort">
-        <option value="date">Sort by Date</option>
-        <option value="name">Sort by Name</option>
-    </select>
+    <section id="results" class="results">
+      <!-- cards populated here -->
+    </section>
 
-    <button onclick="loadCompetitions()">Apply</button>
-</div>
+    <nav class="pagination">
+      <button id="prev">Prev</button>
+      <span id="pageInfo">Page 1</span>
+      <button id="next">Next</button>
+    </nav>
+  </main>
 
-<div id="results"></div>
+  <footer>
+    <small>Data from Coursera public API — <a href="https://api.coursera.org/" target="_blank">api.coursera.org</a></small>
+  </footer>
 
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
